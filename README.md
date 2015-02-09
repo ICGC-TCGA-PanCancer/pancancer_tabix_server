@@ -31,7 +31,10 @@ Install the AWS CLI. Refer to the following guides and remember to setup your AW
 
 2. Run container in the background while mounting the tabix data. You should be able to browse to  http://localhost/ and see a listing of the tabix files after this step. 
 
-        docker run -h master -v /media/large_volume/tabix/data:/data  -d -p 80:80 --name=pancancer_tabix_server pancancer_tabix_server 
+        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   pancancer_tabix_server 
+        
+To explain, the restart policy allows the container to restart if the system is rebooted. The `-v` parameter links the tabix data on the host into the running container. 
+
 
 ## Saving the image
 
