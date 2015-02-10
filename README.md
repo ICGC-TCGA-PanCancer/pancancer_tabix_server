@@ -37,6 +37,13 @@ There are two ways of getting the image, as a developer, you can build the image
         
 To explain, the restart policy allows the container to restart if the system is rebooted. The `-v` parameter links the tabix data on the host into the running container. 
 
+3. You can test that the tabix server is running correctly by seeing if the tabix server is serving up all the tabix files
+
+        wget localhost:80
+        vim index.html
+        
+4. Ensure that you can do the same from a different machine where you are running workflows. Substitute the proper ip address for localhost.
+
 
 ## Saving the image
 
