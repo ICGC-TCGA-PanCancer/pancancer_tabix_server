@@ -10,6 +10,8 @@ Install the AWS CLI. Refer to the following guides and remember to setup your AW
 
 ### Building the image
 
+There are two ways of getting the image, as a developer, you can build the image using the docker file. As a user, download the image from S3.
+
 1. Assuming docker is installed properly, build image with 
 
         docker build  -t pancancer_tabix_server .
