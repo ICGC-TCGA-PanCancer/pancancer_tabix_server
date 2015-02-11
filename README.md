@@ -32,8 +32,9 @@ There are two ways of getting the image, as a developer, you can build the image
         aws s3 cp s3://pan-cancer-data/workflow-data/SangerPancancerCgpCnIndelSnvStr/tabix_data /media/large_volume/tabix/data --recursive
 
 2. Run container in the background while mounting the tabix data. You should be able to browse to  http://localhost/ and see a listing of the tabix files after this step. 
-
-        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   pancancer_tabix_server 
+   
+        # Denis check --restart always
+        docker run -h master -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   pancancer_tabix_server 
         
 To explain, the restart policy allows the container to restart if the system is rebooted. The `-v` parameter links the tabix data on the host into the running container. 
 
