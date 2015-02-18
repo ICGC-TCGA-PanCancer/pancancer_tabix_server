@@ -2,20 +2,19 @@
 
 There are two ways of getting the image:
 * as a developer, you can build the image using the docker file
-* as a user, download the image from S3
+* as a user, download the image from Docker Hub
 
 ### Building the image
 
 1. Assuming docker is installed properly, build image with 
 
-        docker build  -t pancancer_tabix_server .
+        docker build  -t seqware/pancancer_tabix_server .
 
 ### Downloading and restoring the image
 
-1. Rather than building the image, you can also download and restore it from S3 
+1. Rather than building the image, you can also download and restore it from Docker Hub.
 
-        aws s3 cp s3://oicr.docker.images/pancancer_tabix_server.tar .
-        docker load -i pancancer_tabix_server.tar
+        docker pull seqware/pancancer_tabix_server
 
 ## Running the Container
 
@@ -27,7 +26,7 @@ There are two ways of getting the image:
 
 2. Run container in the background as a daemon while mounting the tabix data. You should be able to browse to  http://localhost/ and see a listing of the tabix files after this step. If you are running with a docker version before 1.2, omit the --restart always flag. 
 
-        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   pancancer_tabix_server 
+        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   seqware/pancancer_tabix_server
         
 To explain, the restart policy allows the container to restart if the system is rebooted. The `-v` parameter links the tabix data on the host into the running container. 
 
@@ -43,11 +42,6 @@ To explain, the restart policy allows the container to restart if the system is 
 
 Developers may need to upload new versions of the image.
 
-1. Save the image
+1. Push the image to Docker Hub
 
-        exit
-        docker save -o pancancer_tabix_server.tar pancancer_tabix_server
-
-2. Upload the image to S3 (given proper credentials)
-
-        aws s3 cp pancancer_tabix_server.tar s3://oicr.docker.images
+        docker push seqware/pancancer_tabix_server
