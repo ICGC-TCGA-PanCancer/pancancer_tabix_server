@@ -4,6 +4,8 @@ There are two ways of getting the image:
 * as a developer, you can build the image using the docker file
 * as a user, download the image from Docker Hub
 
+Note that this image is an automated build on Docker Hub. 
+
 ### Building the image
 
 1. Assuming docker is installed properly, build image with 
@@ -36,12 +38,3 @@ To explain, the restart policy allows the container to restart if the system is 
         vim index.html
         
 4. Ensure that you can do the same from a different machine where you are running workflows. Substitute the proper ip address for localhost.
-
-
-## Saving the image
-
-Developers may need to upload new versions of the image.
-
-1. Push the image to Docker Hub
-
-        docker push seqware/pancancer_tabix_server
