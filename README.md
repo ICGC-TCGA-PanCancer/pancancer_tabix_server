@@ -1,24 +1,23 @@
-## Getting the image
+## Pre-requisite
 
-There are two ways of getting the image:
-* as a developer, you can build the image using the docker file
-* as a user, download the image from Docker Hub
+Install the AWS CLI. Refer to the following guides and remember to setup your AWS credentials.
 
-Note that this image is an automated build on Docker Hub. 
+In other words, create a file at ~/.aws/config with the following filled in.
 
-### Building the image
+        [default]
+        aws_access_key_id =
+        aws_secret_access_key =
 
-1. Assuming docker is installed properly, build image with 
+Further details can be found at the following:
+ 
+* https://aws.amazon.com/cli/ 
+* http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html 
 
-        docker build  -t seqware/pancancer_tabix_server .
+        sudo apt-get install python-pip
+        sudo pip install awscli
 
-### Downloading and restoring the image
 
-1. Rather than building the image, you can also download and restore it from Docker Hub.
-
-        docker pull seqware/pancancer_tabix_server
-
-## Running the Container
+## Users - running the container 
 
 1. Copy or link all tabix data from [AWS](https://s3.amazonaws.com/pan-cancer-data/workflow-data/SangerPancancerCgpCnIndelSnvStr/tabix_data/data/unmatched/) into the datastore directory. These files are confidential and cannot be freely shared:
 
@@ -38,3 +37,9 @@ To explain, the restart policy allows the container to restart if the system is 
         vim index.html
         
 4. Ensure that you can do the same from a different machine where you are running workflows. Substitute the proper ip address for localhost.
+
+## Developers - building the image locally
+
+1. Assuming docker is installed properly, build the image with
+
+        docker build  -t seqware/pancancer_tabix_server .
