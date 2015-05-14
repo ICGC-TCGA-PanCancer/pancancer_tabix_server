@@ -27,7 +27,7 @@ Further details can be found at the following:
 
 2. Run container in the background as a daemon while mounting the tabix data. You should be able to browse to  http://localhost/ and see a listing of the tabix files after this step. If you are running with a docker version before 1.2, omit the --restart always flag. 
 
-        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   seqware/pancancer_tabix_server
+        docker run -h master --restart always -v /media/large_volume/tabix/data/data:/data  -d -p 80:80 --name=pancancer_tabix_server -t -i   pancancer/pancancer_tabix_server
         
 To explain, the restart policy allows the container to restart if the system is rebooted. The `-v` parameter links the tabix data on the host into the running container. 
 
@@ -42,4 +42,4 @@ To explain, the restart policy allows the container to restart if the system is 
 
 1. Assuming docker is installed properly, build the image with
 
-        docker build  -t seqware/pancancer_tabix_server .
+        docker build  -t pancancer/pancancer_tabix_server .
