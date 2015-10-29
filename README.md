@@ -19,7 +19,8 @@ Further details can be found at the following:
 
 ## Users - running the container 
 
-1. Copy or link all tabix data from [AWS](https://s3.amazonaws.com/pan-cancer-data/workflow-data/SangerPancancerCgpCnIndelSnvStr/tabix_data/data/unmatched/) into the datastore directory. These files are confidential and cannot be freely shared:
+1. Copy or link all tabix data from [AWS](https://s3.amazonaws.com/pan-cancer-data/workflow-data/SangerPancancerCgpCnIndelSnvStr/tabix_data/data/unmatched/) into the datastore directory. **You will need at least 300GB of available storage for this to work**. These files are confidential and cannot be freely shared:
+
 
         sudo mkdir -p /media/large_volume/tabix/data
         sudo chmod 777 -R /media/large_volume
